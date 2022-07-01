@@ -6,7 +6,7 @@
 /*   By: okarakel <omerlutfu.k34@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:33:49 by okarakel          #+#    #+#             */
-/*   Updated: 2022/07/01 17:27:02 by okarakel         ###   ########.fr       */
+/*   Updated: 2022/07/01 17:44:23 by okarakel         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_error(char	*msg)
 {
 	ft_printf("%s\n", msg);
 	ft_printf("Error\n");
-	exit(0);
+	exit(1);
 }
 
 void	map_size(char *path, t_win *win)
