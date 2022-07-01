@@ -6,13 +6,13 @@
 /*   By: okarakel <omerlutfu.k34@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:31:50 by okarakel          #+#    #+#             */
-/*   Updated: 2022/06/30 16:51:29 by okarakel         ###   ########.fr       */
+/*   Updated: 2022/07/01 17:23:02 by okarakel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	close_frame(t_win *win)
+int	close_frame(t_win *win)
 {
 	int		i;
 
@@ -21,10 +21,16 @@ void	close_frame(t_win *win)
 	mlx_destroy_image(win->mlx, win->chr->chr_down);
 	mlx_destroy_image(win->mlx, win->chr->chr_r);
 	mlx_destroy_image(win->mlx, win->chr->chr_l);
+	mlx_destroy_image(win->mlx, win->bg);
+	mlx_destroy_image(win->mlx, win->exit);
+	mlx_destroy_image(win->mlx, win->coin);
+	mlx_destroy_image(win->mlx, win->wall);
 	while (++i < win->map->hei)
 		free(win->map->_map[i]);
+	free(win->map->_map);
 	mlx_destroy_window(win->mlx, win->win);
 	exit(1);
+	return (0);
 }
 
 int	ft_key(int keycode, t_win *win)
@@ -52,11 +58,11 @@ int	main(int argc, char **argv)
 		read_map(win, argv[1]);
 		map_control(win, win->map->_map);
 		mlx_hook(win->win, 2, 1L << 0, ft_key, win);
+		mlx_hook(win->win, 17, 1L << 0, close_frame, win);
 		render_map(win, win->map->_map, 13);
 		mlx_loop(win->mlx);
 	}
 	else
 		ft_error("Invalid input.");
-	system("leaks so_long");
 	return (0);
 }

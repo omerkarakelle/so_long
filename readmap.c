@@ -6,7 +6,7 @@
 /*   By: okarakel <omerlutfu.k34@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:33:49 by okarakel          #+#    #+#             */
-/*   Updated: 2022/06/30 17:25:07 by okarakel         ###   ########.fr       */
+/*   Updated: 2022/07/01 17:27:02 by okarakel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_error(char	*msg)
 {
 	ft_printf("%s\n", msg);
 	ft_printf("Error\n");
-	system("leaks so_long");
 	exit(0);
 }
 
@@ -36,15 +35,15 @@ void	map_size(char *path, t_win *win)
 	win->map->hei = 0;
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		ft_error("Invalid map file");
+		ft_error("Invalid map file.");
 	line = get_next_line(fd);
 	if (line == 0)
-		ft_error("Invalid map size");
+		ft_error("Invalid map size.");
 	win->map->wid = (int)ft_strlen(line)-1;
 	while (line)
 	{
 		if (ft_mapsize_control(win, line))
-			ft_error("Invalid map");
+			ft_error("Invalid map.");
 		win->map->hei++;
 		free(line);
 		line = get_next_line(fd);

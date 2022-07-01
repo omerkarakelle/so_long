@@ -6,7 +6,7 @@
 /*   By: okarakel <omerlutfu.k34@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:35:21 by okarakel          #+#    #+#             */
-/*   Updated: 2022/06/30 17:33:59 by okarakel         ###   ########.fr       */
+/*   Updated: 2022/07/01 17:26:27 by okarakel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	component_control(t_win	*win, char	**map)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (!strchr("01ECP", map[i][j]))
+			if (!ft_strchr("01ECP", map[i][j]))
 				ft_error("The map contains invalid letter(s).");
 			else if (map[i][j] == 'P')
 				win->map->p_count++;
@@ -34,11 +34,11 @@ void	component_control(t_win	*win, char	**map)
 		}
 	}
 	if (win->map->p_count != 1)
-		ft_error("Invalid number of player(s)");
+		ft_error("Invalid map. Check player count.");
 	if (win->map->e_count < 1)
-		ft_error("There is no exit door.");
+		ft_error("Invalid map. There is no exit door.");
 	if (win->map->c_count < 1)
-		ft_error("There is no collectible.");
+		ft_error("Invalid map. There is no collectible.");
 }
 
 void	wall_control(t_win *win, char **map)
@@ -56,14 +56,14 @@ void	wall_control(t_win *win, char **map)
 			{
 				if (map[i][j] != '1')
 				{
-					ft_error("Invalid walls. Check the borders of the map.");
+					ft_error("Invalid map borders.");
 					break ;
 				}
 			}
 		}
 		if (map[i][0] != '1' || map[i][win->map->wid - 1] != '1')
 		{
-			ft_error("Invalid walls. Check the borders of the map.");
+			ft_error("Invalid map borders.");
 			break ;
 		}
 	}

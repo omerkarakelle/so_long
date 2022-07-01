@@ -6,7 +6,7 @@
 /*   By: okarakel <omerlutfu.k34@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 16:31:39 by okarakel          #+#    #+#             */
-/*   Updated: 2022/06/30 17:12:41 by okarakel         ###   ########.fr       */
+/*   Updated: 2022/07/01 17:24:57 by okarakel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include "./ft_printf/libft/libft.h"
 # include "./mlx/mlx.h"
 # include "./gnl/get_next_line.h"
-# include <fcntl.h>
-# include <string.h>
 
 typedef struct s_map
 {
@@ -63,5 +61,6 @@ int		ft_key(int keycode, t_win *win);
 void	edit_map(int keycode, t_win *win, char **map);
 void	find_player(t_win *win, char **map);
 void	put_score(t_win *win);
+int		close_frame(t_win *win);
 
 #endif
