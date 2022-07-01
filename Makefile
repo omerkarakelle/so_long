@@ -19,7 +19,7 @@ $(MLX) :
 	make -sC ./mlx
 
 $(NAME) : $(OBJS) $(GNLOBJS)
-	gcc -g $(OBJS) $(GNLOBJS) $(LFLAGS) ./ft_printf/libft/libft.a ./ft_printf/libftprintf.a -o $(NAME)
+	gcc $(OBJS) $(GNLOBJS) $(LFLAGS) ./ft_printf/libft/libft.a ./ft_printf/libftprintf.a -o $(NAME)
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
